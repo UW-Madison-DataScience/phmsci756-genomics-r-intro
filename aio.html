@@ -691,7 +691,7 @@ in the Console pane?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>You will get the same output you did as when you ran
 <code>getwd()</code> from the source. You can run any command in the
@@ -790,7 +790,7 @@ about your assumed purpose.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ul>
 <li>
@@ -944,7 +944,7 @@ inside the function’s parentheses.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>While your search results may return several tests, we list a few you
 might find:</p>
@@ -1035,33 +1035,31 @@ vector</li>
 </div>
 </div>
 </div>
-<section id="the-fantastic-world-of-r-awaits-you-or-nobody-wants-to-learn-how-to-use-r"><h2 class="section-heading">“The fantastic world of R awaits you” OR “Nobody wants to learn how
-to use R”<a class="anchor" aria-label="anchor" href="#the-fantastic-world-of-r-awaits-you-or-nobody-wants-to-learn-how-to-use-r"></a>
+<section id="the-fantastic-world-of-r-awaits-you"><h2 class="section-heading">The fantastic world of R awaits you<a class="anchor" aria-label="anchor" href="#the-fantastic-world-of-r-awaits-you"></a>
 </h2>
 <hr class="half-width">
 <p>Before we begin this lesson, we want you to be clear on the goal of
 the workshop and these lessons. We believe that every learner can
-<strong>achieve competency with R</strong>. You have reached competency
-when you find that you are able to <strong>use R to handle common
-analysis challenges in a reasonable amount of time</strong> (which
-includes time needed to look at learning materials, search for answers
-online, and ask colleagues for help). As you spend more time using R
-(there is no substitute for regular use and practice) you will find
-yourself gaining competency and even expertise. The more familiar you
-get, the more complex the analyses you will be able to carry out, with
-less frustration, and in less time - the fantastic world of R awaits
-you!</p>
+<strong>achieve competency with R</strong>. After this lesson, you will
+find that you are able to <strong>use R to handle common analysis
+challenges in a reasonable amount of time</strong> (which includes time
+needed to look at learning materials, search for answers online, and ask
+colleagues for help). As you spend more time using R (there is no
+substitute for regular use and practice) you will find yourself gaining
+competency and even expertise. The more familiar you get, the more
+complex the analyses you will be able to carry out, with less
+frustration, and in less time - the fantastic world of R awaits you!</p>
 </section><section id="what-these-lessons-will-not-teach-you"><h2 class="section-heading">What these lessons will not teach you<a class="anchor" aria-label="anchor" href="#what-these-lessons-will-not-teach-you"></a>
 </h2>
 <hr class="half-width">
-<p>Nobody wants to learn how to use R. People want to learn how to use R
-to analyze their own research questions! Ok, maybe some folks learn R
-for R’s sake, but these lessons assume that you want to start analyzing
-genomic data as soon as possible. Given this, there are many valuable
-pieces of information about R that we simply won’t have time to cover.
-Hopefully, we will clear the hurdle of giving you just enough knowledge
-to be dangerous, which can be a high bar in R! We suggest you look into
-the additional learning materials in the tip box below.</p>
+<p>Many people want to learn how to use R to analyze their own research
+questions. Some folks learn R for R’s sake, but these lessons assume
+that you want to start analyzing genomic or pharama data as soon as
+possible. Given this, there are many valuable pieces of information
+about R that we simply won’t have time to cover. Hopefully, we will
+clear the hurdle of giving you just enough knowledge to be dangerous,
+which can be a high bar in R! We suggest you look into the additional
+learning materials in the tip box below.</p>
 <p><strong>Here are some R skills we will <em>not</em> cover in these
 lessons</strong></p>
 <ul>
@@ -1117,21 +1115,6 @@ lessons in R to choose from</li>
 </section><section id="creating-objects-in-r"><h2 class="section-heading">Creating objects in R<a class="anchor" aria-label="anchor" href="#creating-objects-in-r"></a>
 </h2>
 <hr class="half-width">
-<div id="reminder" class="callout prereq">
-<div class="callout-square">
-<i class="callout-icon" data-feather="check"></i>
-</div>
-<div id="reminder" class="callout-inner">
-<h3 class="callout-title">Reminder<a class="anchor" aria-label="anchor" href="#reminder"></a>
-</h3>
-<div class="callout-content">
-<p>At this point you should be coding along in the
-“<strong>genomics_r_basics.R</strong>” script we created in the last
-episode. Writing your commands in the script (and commenting it) will
-make it easier to record what you did and why.</p>
-</div>
-</div>
-</div>
 <p>What might be called a variable in many languages is called an
 <strong>object</strong> in R.</p>
 <p><strong>To create an object you need:</strong></p>
@@ -1140,10 +1123,9 @@ make it easier to record what you did and why.</p>
 <li>a value (e.g. ‘1’)</li>
 <li>the assignment operator (‘&lt;-’)</li>
 </ul>
-<p>In your script, “<strong>genomics_r_basics.R</strong>”, using the R
-assignment operator ‘&lt;-’, assign ‘1’ to the object ‘a’ as shown.
-Remember to leave a comment in the line above (using the ‘#’) to explain
-what you are doing:</p>
+<p>In your script, using the R assignment operator ‘&lt;-’, assign ‘1’
+to the object ‘a’. Remember to leave a comment in the line above (using
+the ‘#’) to explain what you are doing:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1157,12 +1139,12 @@ code by hitting the <kbd>Run</kbd> button that is just above the first
 line of your script in the header of the Source pane or you can use the
 appropriate shortcut:</p>
 <ul>
-<li>Windows execution shortcut: <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
+<li>Windows shortcut: <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
 </li>
-<li>Mac execution shortcut: <kbd>Cmd(⌘)</kbd>+<kbd>Enter</kbd>
+<li>Mac shortcut: <kbd>Cmd(⌘)</kbd>+<kbd>Enter</kbd>
 </li>
 </ul>
-<p>To run multiple lines of code, you can highlight all the line you
+<p>To run multiple lines of code, you can highlight all the lines you
 wish to run and then hit <kbd>Run</kbd> or use the shortcut key combo
 listed above.</p>
 <p>In the RStudio ‘Console’ you should see:</p>
@@ -1219,7 +1201,7 @@ a diploid human cell</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Here as some possible answers to the challenge:</p>
 <div class="codewrapper sourceCode" id="cb3">
@@ -1415,7 +1397,7 @@ before you look at the solution</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1601,7 +1583,7 @@ the <code>round()</code> function can take 2 arguments.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1857,7 +1839,7 @@ vector</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: upper-alpha">
 <li>False - Vectors have both of these properties<br>
@@ -2096,7 +2078,7 @@ c. <code>snp_positions</code></p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb65">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2157,7 +2139,7 @@ c. To the <code>snp_positions</code> vector add: 116792991</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb71">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2229,7 +2211,7 @@ CYP1A1 and then<br>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb77">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2278,7 +2260,7 @@ contains:</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb79">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2315,7 +2297,7 @@ contains:</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb81">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2917,7 +2899,7 @@ numbers used commas for decimal separation (i.e. 1,00)?</p></li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: upper-alpha">
 <li><p>The <code>read.csv()</code> function has the argument ‘header’
@@ -3372,7 +3354,7 @@ what they return</strong></p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: lower-alpha"><li>
 </li></ol>
@@ -4086,7 +4068,7 @@ filtered depth (“DP”).</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb80">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4240,7 +4222,7 @@ genome_size multiplied by 1,000,000</p></li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb87">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
