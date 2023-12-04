@@ -1,5 +1,5 @@
 ---
-title: R Basics continued - factors and data frames
+title: "Extra: R Basics continued - factors and data frames"
 teaching: 60
 exercises: 30
 source: Rmd
@@ -427,7 +427,7 @@ possible SNP we could generate a plot:
 plot(factor_snps)
 ```
 
-<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
+<img src="fig/09-basics-factors-dataframes-rendered-unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
 
 This isn't a particularly pretty example of a plot but it works. We'll be
 learning much more about creating nice, publication-quality graphics later in
@@ -464,7 +464,7 @@ Now we see our plot has be reordered:
 plot(ordered_factor_snps)
 ```
 
-<img src="fig/03-basics-factors-dataframes-rendered-unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
+<img src="fig/09-basics-factors-dataframes-rendered-unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
 
 Factors come in handy in many places when using R. Even using more
 sophisticated plotting packages such as ggplot2 will sometimes require you
@@ -497,7 +497,7 @@ These packages will be installed into "~/work/phmsci756-genomics-r-intro/phmsci7
 
 # Installing packages --------------------------------------------------------
 - Installing ggplot2 ...                        OK [linked from cache]
-Successfully installed 1 package in 7.1 milliseconds.
+Successfully installed 1 package in 9.5 milliseconds.
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

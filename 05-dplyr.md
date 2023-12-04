@@ -7,6 +7,8 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
+- Explain the basic principle of tidy datasets
+- Be able to load a tabular dataset using base R functions
 - Describe what the `dplyr` package in R is used for.
 - Apply common `dplyr` functions to manipulate data in R.
 - Employ the ‘pipe’ operator to link together a sequence of functions.
@@ -23,10 +25,61 @@ source: Rmd
 
 
 
-Bracket subsetting is handy, but it can be cumbersome and difficult to read, especially for complicated operations.
+## Working with spreadsheets (tabular data)
+
+A substantial amount of the data we work with in genomics will be tabular data,
+this is data arranged in rows and columns - also known as spreadsheets. We could
+write a whole lesson on how to work with spreadsheets effectively ([actually we did](https://datacarpentry.org/organization-genomics/)). For our
+purposes, we want to remind you of a few principles before we work with our
+first set of example data:
+
+**1\) Keep raw data separate from analyzed data**
+
+This is principle number one because if you can't tell which files are the
+original raw data, you risk making some serious mistakes (e.g. drawing conclusion
+from data which have been manipulated in some unknown way).
+
+**2\) Keep spreadsheet data Tidy**
+
+The simplest principle of **Tidy data** is that we have one row in our
+spreadsheet for each observation or sample, and one column for every variable
+that we measure or report on. As simple as this sounds, it's very easily
+violated. Most data scientists agree that significant amounts of their time is
+spent tidying data for analysis. Read more about data organization in
+[our lesson](https://datacarpentry.org/organization-genomics/) and
+in [this paper](https://www.jstatsoft.org/article/view/v059i10).
+
+**3\) Trust but verify**
+
+Finally, while you don't need to be paranoid about data, you should have a plan
+for how you will prepare it for analysis. **This a focus of this lesson.**
+You probably already have a lot of intuition, expectations, assumptions about
+your data - the range of values you expect, how many values should have
+been recorded, etc. Of course, as the data get larger our human ability to
+keep track will start to fail (and yes, it can fail for small data sets too).
+R will help you to examine your data so that you can have greater confidence
+in your analysis, and its reproducibility.
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Tip: Keeping you raw data separate
+
+When you work with data in R, you are not changing the original file you
+loaded that data from. This is different than (for example) working with
+a spreadsheet program where changing the value of the cell leaves you one
+"save"-click away from overwriting the original file. You have to purposely
+use a writing function (e.g. `write.csv()`) to save data loaded into R. In
+that case, be sure to save the manipulated data into a new file. More on this
+later in the lesson.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Base R (without additional packages) has a way of subsetting using brakets, which is handy, but it can be cumbersome and difficult to read, 
+especially for complicated operations.
 
 Luckily, the [`dplyr`](https://cran.r-project.org/package=dplyr)
-package provides a number of very useful functions for manipulating data frames
+package provides a number of very useful functions for manipulating data frames (aka spreadsheets or tables of data)
 in a way that will reduce repetition, reduce the probability of making
 errors, and probably even save you some typing. As an added bonus, you might
 even find the `dplyr` grammar easier to read.
@@ -55,6 +108,21 @@ install.packages("ggplot2") ## installs ggplot2 package
 install.packages("readr") ## install readr package
 ```
 
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Tip: Installing packages
+
+It may be temping to install the `tidyverse` package, as it contains many
+useful collection of packages for this lesson and beyond. However, when
+teaching or following this lesson, we advise that participants install
+`dplyr`, `readr`, `ggplot2`, and `tidyr` individually as shown above.
+Otherwise, a substaial amount of the lesson will be spend waiting for the
+installation to complete.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 You might get asked to choose a CRAN mirror -- this is asking you to
 choose a site to download the package from. The choice doesn't matter too much; I'd recommend choosing the RStudio mirror.
 
@@ -69,19 +137,6 @@ library("readr")          ## load in readr package to use
 You only need to install a package once per computer, but you need to load it
 every time you open a new R session and want to use that package.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Tip: Installing packages
-
-It may be temping to install the `tidyverse` package, as it contains many
-useful collection of packages for this lesson and beyond. However, when
-teaching or following this lesson, we advise that participants install
-`dplyr`, `readr`, `ggplot2`, and `tidyr` individually as shown above.
-Otherwise, a substaial amount of the lesson will be spend waiting for the
-installation to complete.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## What is dplyr?
 
@@ -101,9 +156,73 @@ memory. The database connections essentially remove that limitation in that you
 can have a database that is over 100s of GB, conduct queries on it directly and pull
 back just what you need for analysis in R.
 
-### Loading .csv files in tidy style
 
-The Tidyverse's `readr` package provides its own unique way of loading .csv files in to R using `read_csv()`, which is similar to `read.csv()`. `read_csv()` allows users to load in their data faster, doesn't create row names, and allows you to access non-standard variable names (ie. variables that start with numbers of contain spaces), and outputs your data on the R console in a tidier way. In short, it's a much friendlier way of loading in potentially messy data.
+## Importing tabular data into R
+
+There are several ways to import data into R. We will start loading our data using the tidyverse package called `readr`
+and a function called `read_csv()`
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exercise: Review the arguments of the `read_csv()` function
+
+**Before using the `read_csv()` function, use R's help feature to answer the
+following questions**.
+
+*Hint*: Entering '?' before the function name and then running that line will
+bring up the help documentation. Also, `read_csv()` is part of a family of 
+functions for reading in data called `read_delim()` so you will need to look for
+the help page for `read_delim()` instead. When reading this particular help
+be careful to pay attention to the 'read_csv' expression under the 'Usage'
+heading. Other answers will be in the 'Arguments' heading.
+
+A) What is the default parameter for 'col_names' in the `read_csv()` function?
+
+B) What argument would you have to change to read a file that was delimited
+by semicolons (;) rather than commas?
+
+C) What argument would you have to change to read skip commented lines (starting with \#) at the beginning 
+of a file (like our VCF file)? Hint: There are a couple of different possible answers to this question.
+
+D) What argument would you have to change to read in only the first 10,000 rows
+of a very large file?
+
+:::::::::::::::  solution
+
+## Solution
+
+A) The `read_csv()` function has the argument 'col_names' set to TRUE by default,
+this means the function always assumes the first row is header information,
+(i.e. column names)
+
+B) The `read_csv()` function has the argument 'delim' which allows you to change the delimiter (aka separator) between columns.
+The function assumes commas are used as delimiters, as you would expect.
+Changing this parameter (e.g. `delim=";"`) would now interpret semicolons as
+delimiters.
+
+C) To skip commented lines at the beginning of a file, there are a couple options.
+If the number of lines is consistent, we can use the `skip` argument, for example, `skip = 3`
+will skip the first 3 lines of the file and then start reading in the header and data starting on line
+4. If the commented lines use a consistent delimeter (like \#) we can instead use the `comment` argument,
+which skips any information after the charcter given. In this example `comment = '#'` will ignore lines starting
+with the hashtag/pound symbol.  Note if you use both, skip will be executed first and then comment.
+
+D) You can set `n_max` to a numeric value (e.g. `n_max=10000`) to choose how
+many rows of a file you read in. This may be useful for very large files
+where not all the data is needed to test some data cleaning steps you are
+applying.
+
+Hopefully, this exercise gets you thinking about using the provided help
+documentation in R. There are many arguments that exist, but which we wont
+have time to cover. Look here to get familiar with functions you use
+frequently, you may be surprised at what you find they can do.
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+### Loading .csv files in tidy style
 
 Now let's load our vcf .csv file using `read_csv()`:
 
@@ -547,7 +666,7 @@ filter(variants, POS >= 1e6 & POS <= 2e6, QUAL > 200, !INDEL)
 
 ### Pipes
 
-But what if you wanted to select and filter? We can do this with pipes. Pipes, are a fairly recent addition to R. Pipes let you
+But what if you wanted to select and filter? We can do this with pipes. Pipes let you
 take the output of one function and send it directly to the next, which is
 useful when you need to many things to the same data set. It was
 possible to do this before pipes were added to R, but it was
@@ -588,9 +707,43 @@ the object on its left and passes it as the first argument to the function on
 its right, we don't need to explicitly include the data frame as an argument
 to the `filter()` and `select()` functions any more.
 
+:::::::::::::::::: callout
+
+## Same code with no pipes
+
+Without pipes the code would look like the following.
+
+
+```r
+  select(filter(variants, sample_id == "SRR2584863"), REF, ALT, DP)
+```
+
+```{.output}
+# A tibble: 25 × 3
+   REF                              ALT                                       DP
+   <chr>                            <chr>                                  <dbl>
+ 1 T                                G                                          4
+ 2 G                                T                                          6
+ 3 G                                T                                         10
+ 4 CTTTTTTT                         CTTTTTTTT                                 12
+ 5 CCGC                             CCGCGC                                    10
+ 6 C                                T                                         10
+ 7 C                                A                                          8
+ 8 G                                A                                         11
+ 9 ACAGCCAGCCAGCCAGCCAGCCAGCCAGCCAG ACAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGC…     3
+10 AT                               ATT                                        7
+# ℹ 15 more rows
+```
+In this code we do the filter first and then wrap the `select` function around it to use the output
+of the `filter` command as the input fo the `select` function.
+While both are valid, using pipes is considered more readable as it displays the functions in top down order,
+instead of inside out order.
+
+::::::::::::::::::::::::::
+
 Some may find it helpful to read the pipe like the word "then". For instance,
 in the above example, we took the data frame `variants`, *then* we `filter`ed
-for rows where `sample_id` was SRR2584863, *then* we `select`ed the `REF`, `ALT`, and `DP` columns, *then* we showed only the first six rows.
+for rows where `sample_id` was SRR2584863, *then* we `select`ed the `REF`, `ALT`, and `DP` columns.
 The **`dplyr`** functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
 more complex manipulations of data frames.
@@ -630,11 +783,12 @@ SRR2584863_variants
 # ℹ 15 more rows
 ```
 
-Similar to `head()` and `tail()` functions, we can also look at the first or last six rows using tidyverse function `slice()`. Slice is a more versatile function that allows users to specify a range to view:
+We can use the `head()` and `tail()` functions to look at the first or last six rows.
+There is also a more versitle tidyverse function `slice()`, that allows users to specify a range to view:
 
 
 ```r
-SRR2584863_variants %>% slice(1:6)
+SRR2584863_variants %>% head()
 ```
 
 ```{.output}
@@ -651,30 +805,39 @@ SRR2584863_variants %>% slice(1:6)
 
 
 ```r
-SRR2584863_variants %>% slice(10:25)
+SRR2584863_variants %>% tail()
 ```
 
 ```{.output}
-# A tibble: 16 × 3
-   REF   ALT      DP
-   <chr> <chr> <dbl>
- 1 AT    ATT       7
- 2 A     C         9
- 3 A     C        20
- 4 G     T        12
- 5 A     T        19
- 6 G     A        15
- 7 A     C        10
- 8 C     A        14
- 9 A     G         9
-10 A     C        13
-11 A     AC        2
-12 G     T        10
-13 A     G        16
-14 A     C        11
-15 TGG   T        10
-16 A     C         9
+# A tibble: 6 × 3
+  REF   ALT      DP
+  <chr> <chr> <dbl>
+1 A     AC        2
+2 G     T        10
+3 A     G        16
+4 A     C        11
+5 TGG   T        10
+6 A     C         9
 ```
+
+
+```r
+SRR2584863_variants %>% slice(4:10) # shows rows 4-10 instead
+```
+
+```{.output}
+# A tibble: 7 × 3
+  REF                              ALT                                        DP
+  <chr>                            <chr>                                   <dbl>
+1 CTTTTTTT                         CTTTTTTTT                                  12
+2 CCGC                             CCGCGC                                     10
+3 C                                T                                          10
+4 C                                A                                           8
+5 G                                A                                          11
+6 ACAGCCAGCCAGCCAGCCAGCCAGCCAGCCAG ACAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGCC…     3
+7 AT                               ATT                                         7
+```
+
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
