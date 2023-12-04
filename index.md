@@ -4,10 +4,10 @@ site: sandpaper::sandpaper_site
 ---
 
 **Welcome to R!** Working with a programming language (especially if it's your
-first time) often feels intimidating, but the rewards outweigh any frustrations.
+first time) often feels intimidating, but the rewards will eventually outweigh any frustrations.
 An important secret of coding is that even experienced programmers find it
-difficult and frustrating at times – so if even the best feel that way, why let
-intimidation stop you? Given time and practice\* you will soon find it easier
+difficult and frustrating at times – so if even the best feel that way, try not to let
+intimidation stop you. Given time and practice\* you will soon find it easier
 and easier to accomplish what you want.
 
 Why learn to code? Bioinformatics – like biology – is messy. Different
@@ -25,12 +25,13 @@ there are no kits?
 R is one of the most widely-used and powerful programming languages in
 bioinformatics. R especially shines where a variety of statistical tools are
 required (e.g. RNA-Seq, population genomics, etc.) and in the generation of
-publication-quality graphs and figures. Rather than get into an R vs. Python
-debate (both are useful), keep in mind that many of the concepts you will learn
+publication-quality graphs and figures. Many researchers at this point ask, 
+Should I learn R or python?".  In this lesson we will teach R, but
+keep in mind that many of the concepts you will learn
 apply to Python and other programming languages.
 
-Finally, we won't lie; R is not the easiest-to-learn programming language ever
-created. So, don't get discouraged! The truth is that even with the modest
+R is can be difficult for some to learn.
+However, don't get discouraged! The truth is that even with the modest
 amount of R we will cover today, you can start using some sophisticated R
 software packages, and have a general sense of how to interpret an R script.
 Get through these lessons, and you are on your way to being an accomplished R
