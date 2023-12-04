@@ -155,7 +155,6 @@ memory. The database connections essentially remove that limitation in that you
 can have a database that is over 100s of GB, conduct queries on it directly and pull
 back just what you need for analysis in R.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Importing tabular data into R
 
@@ -218,9 +217,9 @@ have time to cover. Look here to get familiar with functions you use
 frequently, you may be surprised at what you find they can do.
 
 
-
 :::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Loading .csv files in tidy style
 
