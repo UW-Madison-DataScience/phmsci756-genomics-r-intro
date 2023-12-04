@@ -62,11 +62,12 @@ episodes:
 - 00-introduction.Rmd
 - 01-r-basics.Rmd
 - 02-data-prelude.Rmd
-- 03-basics-factors-dataframes.Rmd
-- 04-bioconductor-vcfr.Rmd
 - 05-dplyr.Rmd
 - 06-data-visualization.Rmd
 - 07-r-help.Rmd
+- 08-vectors-extra.Rmd
+- 09-basics-factors-dataframes.Rmd
+- 10-bioconductor-vcfr.Rmd
 
 # Information for Learners
 learners: 
