@@ -1090,7 +1090,7 @@ To remove the grouping structure from a grouped data frame, you can use the `ung
 For more details, refer to the [dplyr documentation on grouping](https://dplyr.tidyverse.org/articles/grouping.html).
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Reshaping data frames
+### Reshaping data frames - Extra
 
 It can sometimes be useful to transform the "long" tidy format, into the wide format. This transformation can be done with the `pivot_wider()` function provided by the `tidyr` package (also part of the `tidyverse`).
 
