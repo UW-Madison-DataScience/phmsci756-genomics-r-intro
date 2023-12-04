@@ -490,9 +490,13 @@ You will need to think carefully about how to structure your objects in R.
 
 ## Exercise
 
-There are a lot of columns in our data set, so let's just look at the
-`sample_id`, `POS`, `QUAL`, and `POLPROB` columns for now. Add a
+1. There are a lot of columns in our data set, so let's just look at the
+`sample_id`, `POS`, `QUAL`, and `POLPROB` columns for now. 1. Add a
 line to the above code to only show those columns.
+2. Sometimes we may want to order the result by a column, perhaps to have the
+highest values at the top.  Look at the help page for `arrange()` and see if you
+can make the highest values at the top of the resulting data frame.  What would you
+do if you wanted the lowest values at the top?
 
 :::::::::::::::  solution
 
@@ -501,7 +505,17 @@ line to the above code to only show those columns.
 ```{r}
 variants %>%
  mutate(POLPROB = 1 - 10 ^ -(QUAL/10)) %>%
- select(sample_id, POS, QUAL, POLPROB)
+ select(sample_id, POS, QUAL, POLPROB) %>% # part 1
+ arrange(POLPROB) # part 2
+```
+
+How can you make the lowest values on the top? Add the `desc()` function.
+
+```{r}
+variants %>%
+ mutate(POLPROB = 1 - 10 ^ -(QUAL/10)) %>%
+ select(sample_id, POS, QUAL, POLPROB) %>%
+ arrange(desc(POLPROB))
 ```
 
 :::::::::::::::::::::::::
