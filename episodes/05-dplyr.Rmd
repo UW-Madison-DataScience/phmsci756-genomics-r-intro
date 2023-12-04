@@ -360,7 +360,7 @@ filter(variants, POS >= 1e6 & POS <= 2e6, QUAL > 200, !INDEL)
 
 ### Pipes
 
-But what if you wanted to select and filter? We can do this with pipes. Pipes, are a fairly recent addition to R. Pipes let you
+But what if you wanted to select and filter? We can do this with pipes. Pipes let you
 take the output of one function and send it directly to the next, which is
 useful when you need to many things to the same data set. It was
 possible to do this before pipes were added to R, but it was
@@ -383,9 +383,25 @@ the object on its left and passes it as the first argument to the function on
 its right, we don't need to explicitly include the data frame as an argument
 to the `filter()` and `select()` functions any more.
 
+:::::::::::::::::: callout
+
+## Same code with no pipes
+
+Without pipes the code would look like the following.
+
+```{r, echo=TRUE, eval=TRUE, purl=FALSE}
+  select(filter(variants, sample_id == "SRR2584863"), REF, ALT, DP)
+```
+In this code we do the filter first and then wrap the `select` function around it to use the output
+of the `filter` command as the input fo the `select` function.
+While both are valid, using pipes is considered more readable as it displays the functions in top down order,
+instead of inside out order.
+
+::::::::::::::::::::::::::
+
 Some may find it helpful to read the pipe like the word "then". For instance,
 in the above example, we took the data frame `variants`, *then* we `filter`ed
-for rows where `sample_id` was SRR2584863, *then* we `select`ed the `REF`, `ALT`, and `DP` columns, *then* we showed only the first six rows.
+for rows where `sample_id` was SRR2584863, *then* we `select`ed the `REF`, `ALT`, and `DP` columns.
 The **`dplyr`** functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
 more complex manipulations of data frames.
@@ -406,15 +422,21 @@ the first six rows to confirm it's what we want:
 SRR2584863_variants
 ```
 
-Similar to `head()` and `tail()` functions, we can also look at the first or last six rows using tidyverse function `slice()`. Slice is a more versatile function that allows users to specify a range to view:
+We can use the `head()` and `tail()` functions to look at the first or last six rows.
+There is also a more versitle tidyverse function `slice()`, that allows users to specify a range to view:
 
 ```{r}
-SRR2584863_variants %>% slice(1:6)
+SRR2584863_variants %>% head()
 ```
 
 ```{r}
-SRR2584863_variants %>% slice(10:25)
+SRR2584863_variants %>% tail()
 ```
+
+```{r}
+SRR2584863_variants %>% slice(4:10) # shows rows 4-10 instead
+```
+
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
