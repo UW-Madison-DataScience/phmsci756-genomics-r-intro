@@ -928,9 +928,13 @@ You will need to think carefully about how to structure your objects in R.
 
 ## Exercise
 
-There are a lot of columns in our data set, so let's just look at the
-`sample_id`, `POS`, `QUAL`, and `POLPROB` columns for now. Add a
+1. There are a lot of columns in our data set, so let's just look at the
+`sample_id`, `POS`, `QUAL`, and `POLPROB` columns for now. 1. Add a
 line to the above code to only show those columns.
+2. Sometimes we may want to order the result by a column, perhaps to have the
+highest values at the top.  Look at the help page for `arrange()` and see if you
+can make the highest values at the top of the resulting data frame.  What would you
+do if you wanted the lowest values at the top?
 
 :::::::::::::::  solution
 
@@ -940,23 +944,51 @@ line to the above code to only show those columns.
 ```r
 variants %>%
  mutate(POLPROB = 1 - 10 ^ -(QUAL/10)) %>%
- select(sample_id, POS, QUAL, POLPROB)
+ select(sample_id, POS, QUAL, POLPROB) %>% # part 1
+ arrange(POLPROB) # part 2
 ```
 
 ```{.output}
 # A tibble: 801 × 4
    sample_id      POS  QUAL POLPROB
    <chr>        <dbl> <dbl>   <dbl>
- 1 SRR2584863    9972    91    1.00
- 2 SRR2584863  263235    85    1.00
- 3 SRR2584863  281923   217    1   
- 4 SRR2584863  433359    64    1.00
- 5 SRR2584863  473901   228    1   
- 6 SRR2584863  648692   210    1   
- 7 SRR2584863 1331794   178    1   
- 8 SRR2584863 1733343   225    1   
- 9 SRR2584863 2103887    56    1.00
-10 SRR2584863 2333538   167    1   
+ 1 SRR2584866 2055833  4.38   0.636
+ 2 SRR2584866 3538863  4.95   0.680
+ 3 SRR2584866 3550069  5.05   0.687
+ 4 SRR2584866 3550071  5.05   0.687
+ 5 SRR2584866  634603  5.61   0.725
+ 6 SRR2584866 2055692  5.76   0.734
+ 7 SRR2584866 1424975  7.45   0.820
+ 8 SRR2584866  942702  7.91   0.838
+ 9 SRR2584866 2055662  8.14   0.846
+10 SRR2584866 1746738  8.38   0.855
+# ℹ 791 more rows
+```
+
+How can you make the lowest values on the top? Add the `desc()` function.
+
+
+```r
+variants %>%
+ mutate(POLPROB = 1 - 10 ^ -(QUAL/10)) %>%
+ select(sample_id, POS, QUAL, POLPROB) %>%
+ arrange(desc(POLPROB))
+```
+
+```{.output}
+# A tibble: 801 × 4
+   sample_id      POS  QUAL POLPROB
+   <chr>        <dbl> <dbl>   <dbl>
+ 1 SRR2584863  281923   217       1
+ 2 SRR2584863  473901   228       1
+ 3 SRR2584863  648692   210       1
+ 4 SRR2584863 1331794   178       1
+ 5 SRR2584863 1733343   225       1
+ 6 SRR2584863 2333538   167       1
+ 7 SRR2584863 2446984   225       1
+ 8 SRR2584863 2665639   225       1
+ 9 SRR2584863 2999330   225       1
+10 SRR2584863 3339313   211       1
 # ℹ 791 more rows
 ```
 
