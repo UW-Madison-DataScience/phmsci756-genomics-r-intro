@@ -1,5 +1,5 @@
 ---
-title: Using packages from Bioconductor
+title: Extra: Using packages from Bioconductor
 teaching: 10
 exercises: 3
 source: Rmd
