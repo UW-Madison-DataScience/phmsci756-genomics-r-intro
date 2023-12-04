@@ -27,7 +27,7 @@ life_cycle: 'beta'
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/datacarpentry/genomics-r-intro'
+source: 'https://github.com/UW-Madison-DataScience/phmsci756-genomics-r-intro'
 
 # Default branch of your lesson
 branch: 'main'
