@@ -25,6 +25,15 @@
     <loc>https://datacarpentry.github.io/genomics-r-intro/07-r-help.html</loc>
   </url>
   <url>
+    <loc>https://datacarpentry.github.io/genomics-r-intro/08-vectors-extra.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/genomics-r-intro/09-basics-factors-dataframes.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/genomics-r-intro/10-bioconductor-vcfr.html</loc>
+  </url>
+  <url>
     <loc>https://datacarpentry.github.io/genomics-r-intro/404.html</loc>
   </url>
   <url>
@@ -68,6 +77,15 @@
   </url>
   <url>
     <loc>https://datacarpentry.github.io/genomics-r-intro/instructor/07-r-help.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/genomics-r-intro/instructor/08-vectors-extra.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/genomics-r-intro/instructor/09-basics-factors-dataframes.html</loc>
+  </url>
+  <url>
+    <loc>https://datacarpentry.github.io/genomics-r-intro/instructor/10-bioconductor-vcfr.html</loc>
   </url>
   <url>
     <loc>https://datacarpentry.github.io/genomics-r-intro/instructor/404.html</loc>
