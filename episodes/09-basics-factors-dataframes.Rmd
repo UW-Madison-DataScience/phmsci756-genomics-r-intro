@@ -1,5 +1,5 @@
 ---
-title: Extra: R Basics continued - factors and data frames
+title: "Extra: R Basics continued - factors and data frames"
 teaching: 60
 exercises: 30
 source: Rmd
