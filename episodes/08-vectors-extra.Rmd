@@ -1,5 +1,5 @@
 ---
-title: Extra: R Basics continued - factors
+title: "Extra: R Basics continued - factors"
 teaching: 20
 exercises: 20
 source: Rmd
