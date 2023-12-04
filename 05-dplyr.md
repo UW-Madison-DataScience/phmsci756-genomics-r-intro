@@ -918,6 +918,12 @@ variants %>%
 #   gt_GT_alleles <chr>, POLPROB <dbl>
 ```
 
+Note, we did not save the new column.
+We printed the resulting data frame to the screen.
+If we want to save the data frame with the new column, we need to assign it to an object, either overwriting
+our `variants` object (which could be risky of a column of the same name exists) or creating a new object to store it (which takes up more space).
+You will need to think carefully about how to structure your objects in R.
+
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Exercise
