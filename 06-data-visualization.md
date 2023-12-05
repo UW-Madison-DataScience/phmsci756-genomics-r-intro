@@ -326,6 +326,27 @@ ggsave ("depth.pdf", width = 6, height = 4)
 
 If we check the *current working directory*, there should be a newly created file called `depth.pdf` with the above plot.
 
+Note, that ggsave by default saves the last figure that you created. More reproduciblty, you may want to first save the 
+plot to an object and then give ggsave an argument to save that plot specficially.
+
+
+```r
+(readdepthplot <- ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
+  geom_point(alpha = 0.5) +
+  labs(x = "Base Pair Position",
+       y = "Read Depth (DP)",
+       title = "Read Depth vs. Position"))
+```
+
+<img src="fig/06-data-visualization-rendered-add-main-title-asobject-1.png" style="display: block; margin: auto;" />
+
+```r
+# by wrapping the above code in () we can display the plot and save it to an object at the same time
+# Your displayed plot likely didn't change since it is the same plot we last displayed
+ggsave ("depth.pdf", readdepthplot, width = 6, height = 4)
+```
+
+
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Challenge
