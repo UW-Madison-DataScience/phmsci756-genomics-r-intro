@@ -304,15 +304,15 @@ ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
 
 <img src="fig/06-data-visualization-rendered-add-axis-labels-1.png" style="display: block; margin: auto;" />
 
-To add a *main* title to the plot, we use [`ggtitle()`](https://ggplot2.tidyverse.org/reference/labs.html):
+To add a *main* title to the plot, we use [the title argument for the `labs()` function](https://ggplot2.tidyverse.org/reference/labs.html):
 
 
 ```r
 ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
   geom_point(alpha = 0.5) +
   labs(x = "Base Pair Position",
-       y = "Read Depth (DP)") +
-  ggtitle("Read Depth vs. Position")
+       y = "Read Depth (DP)",
+       title = "Read Depth vs. Position")
 ```
 
 <img src="fig/06-data-visualization-rendered-add-main-title-1.png" style="display: block; margin: auto;" />
@@ -359,8 +359,8 @@ To further customize the plot, we can change the default font format:
 ggplot(data = variants, aes(x = POS, y = DP, color = sample_id)) +
   geom_point(alpha = 0.5) +
   labs(x = "Base Pair Position",
-       y = "Read Depth (DP)") +
-  ggtitle("Read Depth vs. Position") +
+       y = "Read Depth (DP)",
+       title = "Read Depth vs. Position") +
   theme(text = element_text(family = "Bookman"))
 ```
 
