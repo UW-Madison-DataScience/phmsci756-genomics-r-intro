@@ -1222,7 +1222,7 @@ A left join keeps all of the data in the table written on the left side of our f
 
 ```r
 # arguments      "left tbl"  "right tbl"
-full <- full_join(variants, metadata_sub, by = join_by(sample_id == run))
+left <- left_join(variants, metadata_sub, by = join_by(sample_id == run))
 ```
 In this case, the resulting data frame matches our `inner` result exactly because there was no missing data in our right table.
 Note: A "right" join is the opposite of a "left" so it will keep all the data in the right most listed table and merge on the info in the left most listed table
@@ -1237,8 +1237,13 @@ left %>%
   count(generation)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'left' not found
+```{.output}
+# A tibble: 3 × 2
+  generation     n
+       <dbl> <int>
+1       5000    10
+2      15000    25
+3      50000   766
 ```
 This result makes it easier to see the accumulation of more SNPs at later generations, without us having to know the sample IDs.
 
