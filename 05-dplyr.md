@@ -1242,6 +1242,33 @@ Error in eval(expr, envir, enclos): object 'left' not found
 ```
 This result makes it easier to see the accumulation of more SNPs at later generations, without us having to know the sample IDs.
 
+::::::::::: challenge
+
+## What about right joins?
+
+1. How many rows and columns would you expect from the following right join?
+
+`right_join(variants, metadata_sub, by = join_by(sample_id == run))`
+
+2. How many rows and columns would you expect from the following right join?
+
+`right_join(metadata_sub, variants, by = join_by(run == sample_id))`
+
+Think carefully about the data in question and which data frame is on the right and which is on the left.
+
+:::::::: solution
+
+**Part 1** There will be 860 rows and 31 variables, just like the full join.
+All of the `sample_id`'s in the `variants` data frame have matches and will be kept and then it will also add on the `run` values that do not match but were represented in the `metadata_sub` data frame with empty info in the other columns since there is no matching rows in the `variants` data frame.
+
+**Part 2** There will be 801 rows and 31 variables, just like the inner and left joins.
+This join should always match exactly the left join as it is the mirrored right join.
+It will only match the inner join if all of the samples in the `by` match-up in the right data frame are in the left data frame as well, otherwise it will drop the rows not listed in the left for the inner join.
+
+:::::::::::::::::
+
+:::::::::::::::::::::
+
 
 ### Reshaping data frames - Extra
 
