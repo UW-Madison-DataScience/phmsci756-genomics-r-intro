@@ -40,7 +40,7 @@
     </div>
   </div>
   <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav data" aria-label="Main Navigation"><div class="container-fluid nav-container">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
     </button>
@@ -51,7 +51,7 @@
     </div>
     <div class="search-icon-sm">
       <!-- TODO: do not show until we have search
-      <i role="img" aria-label="search button" data-feather="search"></i>
+        <i role="img" aria-label="search button" data-feather="search"></i>
       -->
     </div>
     <div class="desktop-nav">
@@ -98,7 +98,7 @@
         <!-- START: inst/pkgdown/templates/navbar.html -->
 <div id="sidebar-col" class="col-lg-4">
   <div id="sidebar" class="sidebar">
-      <nav aria-labelledby="flush-headingEleven"><button role="button" aria-label="close menu" alt="close menu" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle">
+      <nav aria-labelledby="flush-headingEleven"><button role="button" aria-label="close menu" alt="close menu" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle" data-collapse="Collapse " data-episodes="Episodes ">
           <i class="search-icon" data-feather="x" role="img"></i>
         </button>
         <div class="sidebar-inner">
@@ -135,14 +135,16 @@
               <div id="flush-collapseEleven" class="accordion-collapse show collapse" aria-labelledby="flush-headingEleven" data-bs-parent="#accordionFlush11">
 
                 <div class="accordion-body">
-                  <div class="accordion accordion-flush" id="accordionFlush1">
+                  <?xml version="1.0" encoding="UTF-8"?><div class="accordion accordion-flush" id="accordionFlush1">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading1">
-        <a href="index.html">Summary and Schedule</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
+      <a href="index.html">Summary and Schedule</a>
+    </div>
+    <!--/div.accordion-header-->
+  </div>
+  <!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
 
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
@@ -296,16 +298,16 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Wrangling and Analyses with Tidyverse</h1>
-        <p> Last updated on 2023-12-04 | 
+        <p>Last updated on 2023-12-18 |
         
         <a href="https://github.com/UW-Madison-DataScience/phmsci756-genomics-r-intro/edit/main/episodes/05-dplyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
         
         
-        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 55 minutes </p>
+        <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
         
         <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 
         
@@ -490,8 +492,7 @@ function called <code>read_csv()</code></p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise-review-the-arguments-of-the-read_csv-function" class="callout-inner">
-<h3 class="callout-title">Exercise: Review the arguments of the
-<code>read_csv()</code> function<a class="anchor" aria-label="anchor" href="#exercise-review-the-arguments-of-the-read_csv-function"></a>
+<h3 class="callout-title">Exercise: Review the arguments of the<code>read_csv()</code>function<a class="anchor" aria-label="anchor" href="#exercise-review-the-arguments-of-the-read_csv-function"></a>
 </h3>
 <div class="callout-content">
 <p><strong>Before using the <code>read_csv()</code> function, use R’s
@@ -520,11 +521,9 @@ question.</p></li>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: upper-alpha"><li><p>The <code>read_csv()</code> function has the argument ‘col_names’
 set to TRUE by default, this means the function always assumes the first
@@ -560,6 +559,20 @@ use frequently, you may be surprised at what you find they can do.</p>
 <div class="section level3">
 <h3 id="loading--csv-files-in-tidy-style">Loading .csv files in tidy style<a class="anchor" aria-label="anchor" href="#loading--csv-files-in-tidy-style"></a></h3>
 <p>Now let’s load our vcf .csv file using <code>read_csv()</code>:</p>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Rows: 801 Columns: 29
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (7): sample_id, CHROM, REF, ALT, DP4, Indiv, gt_GT_alleles
+dbl (16): POS, QUAL, IDV, IMF, DP, VDB, RPB, MQB, BQB, MQSB, SGB, MQ0F, AC, ...
+num  (1): gt_PL
+lgl  (5): ID, FILTER, INDEL, ICB, HOB
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
 </div>
 <div class="section level3">
 <h3 id="taking-a-quick-look-at-data-frames">Taking a quick look at data frames<a class="anchor" aria-label="anchor" href="#taking-a-quick-look-at-data-frames"></a></h3>
@@ -613,7 +626,7 @@ column. Although what we see is similar to outputs of
 first argument to this function is the data frame
 (<code>variants</code>), and the subsequent arguments are the columns to
 keep.</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -639,7 +652,7 @@ keep.</p>
 </div>
 <p>To select all columns <em>except</em> certain ones, put a “-” in
 front of the variable to exclude it.</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -670,7 +683,7 @@ front of the variable to exclude it.</p>
 based on their names. For instance, <code>ends_with()</code> allows you
 to select columns that ends with specific letters. For instance, if you
 wanted to select columns that end with the letter “B”:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -713,13 +726,11 @@ Note that contains() is not case sensistive.</p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -756,7 +767,7 @@ Note that contains() is not case sensistive.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge" class="callout-inner">
-<h3 class="callout-title">Challenge<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge"></a>
+<h3 class="callout-title">Challenge<em>(continued)</em><a class="anchor" aria-label="anchor" href="#challenge"></a>
 </h3>
 <div class="callout-content">
 <p>We can also get to <code>variants_result</code> in one line of
@@ -767,13 +778,11 @@ code:</p>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">
-  Alternative solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution3">Alternative solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -803,7 +812,7 @@ code:</p>
 </div>
 </div>
 <p>To choose rows, use <code>filter()</code>:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -833,7 +842,7 @@ code:</p>
 </div>
 <p><code>filter()</code> will keep all the rows that match the
 conditions that are provided. Here are a few examples:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -861,7 +870,7 @@ conditions that are provided. Here are a few examples:</p>
 #   SGB &lt;dbl&gt;, MQ0F &lt;dbl&gt;, ICB &lt;lgl&gt;, HOB &lt;lgl&gt;, AC &lt;dbl&gt;, AN &lt;dbl&gt;, DP4 &lt;chr&gt;,
 #   MQ &lt;dbl&gt;, Indiv &lt;chr&gt;, gt_PL &lt;dbl&gt;, gt_GT &lt;dbl&gt;, gt_GT_alleles &lt;chr&gt;</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -889,7 +898,7 @@ conditions that are provided. Here are a few examples:</p>
 #   SGB &lt;dbl&gt;, MQ0F &lt;dbl&gt;, ICB &lt;lgl&gt;, HOB &lt;lgl&gt;, AC &lt;dbl&gt;, AN &lt;dbl&gt;, DP4 &lt;chr&gt;,
 #   MQ &lt;dbl&gt;, Indiv &lt;chr&gt;, gt_PL &lt;dbl&gt;, gt_GT &lt;dbl&gt;, gt_GT_alleles &lt;chr&gt;</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -922,7 +931,7 @@ score that a polymorphism exists at this position given the sequencing
 data. Lower QUAL scores indicate low probability of a polymorphism
 existing at that site. <code>filter()</code> can be useful for selecting
 mutations that have a QUAL score above a certain threshold:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -955,7 +964,7 @@ can separate them using a <code>,</code> as arguments to the function,
 they will be combined using the <code>&amp;</code> (AND) logical
 operator. If you need to use the <code>|</code> (OR) logical operator,
 you can specify it explicitly:</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -992,7 +1001,7 @@ you can specify it explicitly:</p>
 #   SGB &lt;dbl&gt;, MQ0F &lt;dbl&gt;, ICB &lt;lgl&gt;, HOB &lt;lgl&gt;, AC &lt;dbl&gt;, AN &lt;dbl&gt;, DP4 &lt;chr&gt;,
 #   MQ &lt;dbl&gt;, Indiv &lt;chr&gt;, gt_PL &lt;dbl&gt;, gt_GT &lt;dbl&gt;, gt_GT_alleles &lt;chr&gt;</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1039,13 +1048,11 @@ FALSE, we can use to negation symbol “!”. (eg. !TRUE == FALSE).</p>
 <div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
-  <h4 class="accordion-header" id="headingSolution4">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1089,7 +1096,7 @@ package, which is installed as part of <code>dplyr</code>. If you use
 RStudio, you can type the pipe with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> +
 <kbd>M</kbd> if you’re using a PC, or <kbd>Cmd</kbd> + <kbd>Shift</kbd>
 + <kbd>M</kbd> if you’re using a Mac.</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1133,7 +1140,7 @@ frame as an argument to the <code>filter()</code> and
 </h3>
 <div class="callout-content">
 <p>Without pipes the code would look like the following.</p>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1177,7 +1184,7 @@ linear workflows with the pipe, we can accomplish more complex
 manipulations of data frames.</p>
 <p>If we want to create a new object with this smaller version of the
 data we can do so by assigning it a new name:</p>
-<div class="codewrapper sourceCode" id="cb34">
+<div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1187,7 +1194,7 @@ data we can do so by assigning it a new name:</p>
 </div>
 <p>This new object includes all of the data from this sample. Let’s look
 at just the first six rows to confirm it’s what we want:</p>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1215,7 +1222,7 @@ at just the first six rows to confirm it’s what we want:</p>
 to look at the first or last six rows. There is also a more versitle
 tidyverse function <code>slice()</code>, that allows users to specify a
 range to view:</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1234,7 +1241,7 @@ range to view:</p>
 5 CCGC     CCGCGC       10
 6 C        T            10</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb39">
+<div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1253,7 +1260,7 @@ range to view:</p>
 5 TGG   T        10
 6 A     C         9</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb41">
+<div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1292,13 +1299,11 @@ where the filtered depth (DP) is at least 10. Showing only 5th through
 <div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
-  <h4 class="accordion-header" id="headingSolution5">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1338,7 +1343,7 @@ a probability value according to the formula:</p>
 <p>We can use <code>mutate</code> to add a column (<code>POLPROB</code>)
 to our <code>variants</code> data frame that shows the probability of a
 polymorphism at that site given the data.</p>
-<div class="codewrapper sourceCode" id="cb45">
+<div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1397,13 +1402,11 @@ lowest values at the top?</li>
 <div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
-  <h4 class="accordion-header" id="headingSolution6">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution6">Show me the solution</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb47">
+<div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1432,7 +1435,7 @@ lowest values at the top?</li>
 </div>
 <p>How can you make the lowest values on the top? Add the
 <code>desc()</code> function.</p>
-<div class="codewrapper sourceCode" id="cb49">
+<div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1473,7 +1476,7 @@ makes this very easy through the use of the <code>group_by()</code>
 function, which splits the data into groups.</p>
 <p>We can use <code>group_by()</code> to tally the number of mutations
 detected in each sample using the function <code>tally()</code>:</p>
-<div class="codewrapper sourceCode" id="cb51">
+<div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1494,7 +1497,7 @@ detected in each sample using the function <code>tally()</code>:</p>
 <p>Since counting or tallying values is a common use case for
 <code>group_by()</code>, an alternative function was created to bypasses
 <code>group_by()</code> using the function <code>count()</code>:</p>
-<div class="codewrapper sourceCode" id="cb53">
+<div class="codewrapper sourceCode" id="cb54">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1526,13 +1529,11 @@ detected in each sample using the function <code>tally()</code>:</p>
 <div id="accordionSolution7" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
-  <h4 class="accordion-header" id="headingSolution7">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution7">Show me the solution</h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb55">
+<div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1575,7 +1576,7 @@ easiest way to ignore <code>NA</code> (the missing data) is to use
 <code>na.rm = TRUE</code> (<code>rm</code> stands for remove).</p>
 <p>So to view the mean, median, maximum, and minimum filtered depth
 (<code>DP</code>) for each sample:</p>
-<div class="codewrapper sourceCode" id="cb57">
+<div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1624,6 +1625,185 @@ documentation on grouping</a>.</p>
 </div>
 </div>
 <div class="section level3">
+<h3 id="combining-data-frames">Combining data frames<a class="anchor" aria-label="anchor" href="#combining-data-frames"></a></h3>
+<p>There are times you may have multiple data tables that have
+information that could come together in them. This is often a structure
+set up that reflects database management where you you separate out
+different information into different related tables. For example, you
+may have one table that contains the results from your SNP analysis, as
+we have been using in this lesson, and another that has the metadata
+about your samples. For some applications you may want to pull
+information from that metadata table and be able to use it in your SNP
+analysis, maybe particular groupings that are repsented in the metadata
+table or alternate names, or other information.</p>
+<p>For our example, we want to be able to use the generation number
+instead of the <code>sample_id</code> for further analyses and perhaps
+plotting later. We have a table of metadata from the <a href="https://datacarpentry.org/organization-genomics/01-tidiness.html" class="external-link">Project
+Organization and Management for Genomics</a> lesson that includes
+columns that matches up the <code>sample_id</code> column with the
+<code>generation</code> information.</p>
+<p>First, we will download the metadata table using the
+<code>download.file</code> function in R.</p>
+<div class="codewrapper sourceCode" id="cb60">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">download.file</span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/datacarpentry/wrangling-genomics/gh-pages/files/Ecoli_metadata_composite.tsv"</span>, destfile <span class="op">=</span> <span class="st">"data/Ecoli_metadata_composite.tsv"</span><span class="op">)</span></span></code></pre>
+</div>
+<p>We will only need to do this once and not every time we run our
+script so we can then comment the last line out.</p>
+<p>Next we need to load the metadata table into an object in R. This
+time we will use the <code>read_delim()</code> function as it has preset
+arguments that work well for <em>tab separated value</em> files,
+<code>tsv</code>, which is the format this table is</p>
+<div class="codewrapper sourceCode" id="cb61">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">metadata</span> <span class="op">&lt;-</span> <span class="fu">read_delim</span><span class="op">(</span><span class="st">"data/Ecoli_metadata_composit.tsv"</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error: 'data/Ecoli_metadata_composit.tsv' does not exist in current working directory ('/home/runner/work/phmsci756-genomics-r-intro/phmsci756-genomics-r-intro/site/built').</code></pre>
+</div>
+<p>This prints a warning message because the last entry is missing some
+values but it should still work for our purposes.</p>
+<p>Before we match-up our table, we will simplify the metadata table to
+only include 3 columns.</p>
+<div class="codewrapper sourceCode" id="cb63">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">metadata_sub</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">metadata</span>, <span class="va">strain</span>, <span class="va">generation</span>, <span class="va">run</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'metadata' not found</code></pre>
+</div>
+<p>Now we need to consider how we want to merge these two tables
+together. There are many ways we might intersect these two tables, for
+example: <em>Do we want an intersection that only keeps rows that match
+in a certain column from both tables? Do we want to keep only the rows
+from one table and the matching information from the other table? Do we
+want to keep only the non-matching information from both tables (though
+this is less common)?</em></p>
+<p>In our case we want to keep all the rows from the
+<code>variants</code> table and then pull information that matches from
+the <code>metadata_sub</code> table. First, we will explore what happens
+when we join these tables in other ways as well as an experiment.</p>
+<p>First we will try to keep only the rows, observations, that match in
+both tables. This is called an <code>inner_join</code>. For this join we
+need to tell it which columns are equivalent in our two data frames. You
+will not need to do this if the columns have the same name across data
+frames but in our case what is called <code>sample_id</code> in the
+<code>variants</code> data frame is called <code>run</code> in the
+<code>metadata_sub</code> data frame.</p>
+<div class="codewrapper sourceCode" id="cb65">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">inner</span> <span class="op">&lt;-</span> <span class="fu">inner_join</span><span class="op">(</span><span class="va">variants</span>, <span class="va">metadata_sub</span>, by <span class="op">=</span> <span class="fu">join_by</span><span class="op">(</span><span class="va">sample_id</span> <span class="op">==</span> <span class="va">run</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'metadata_sub' not found</code></pre>
+</div>
+<p>In this case the <code>inner</code> data frame is the same number of
+rows (801) as the <code>variants</code> data frame. This is because all
+of the <code>sample_id</code>’s that are in the <code>variants</code>
+data frame have a corresponding <code>run</code> in
+<code>metadata_sub</code>. If one was missing, then all of the data for
+that sample would be dropped from the resulting data frame.</p>
+<p>We can also see that instead of having 29 columns/variables like
+<code>variants</code>, <code>inner</code> has 31 columns/variables. You
+may want to run <code>View(inner)</code> and scroll to the far right to
+see the new <code>strain</code>, and <code>generation</code> columns
+that were added from the <code>metadata_sub</code> table. Note, it did
+not add on the <code>run</code> column since that is repeated
+information in the <code>sample_id</code> column. Also, we would have
+had many more new columns added if we had used the full
+<code>metadata</code> data frame instead of the
+<code>metadata_sub</code> data frame.</p>
+<p>Next we will try an “outer join” which only keeps all observations
+which are present in either data frames.</p>
+<div class="codewrapper sourceCode" id="cb67">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">full</span> <span class="op">&lt;-</span> <span class="fu">full_join</span><span class="op">(</span><span class="va">variants</span>, <span class="va">metadata_sub</span>, by <span class="op">=</span> <span class="fu">join_by</span><span class="op">(</span><span class="va">sample_id</span> <span class="op">==</span> <span class="va">run</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'metadata_sub' not found</code></pre>
+</div>
+<p>The new <code>full</code> data frame now has more rows than
+<code>inner</code> or <code>variants</code>! Though it has the same
+number of columns as <code>inner</code> adding on the two additional
+<code>strain</code> and <code>generation</code> columns. <em>Why do you
+think this has more rows than our original data?</em> Hint: You may want
+to <code>View(full)</code> and scroll down to the botton of the data
+frame.</p>
+<p>Once you look at the bottom of the data frame, you will see a bunch
+of <code>sample_id</code>’s that we did not run the SNP analysis on but
+were in the <code>metadata_sub</code> data frame. The full join will
+keep every unique observation from your <code>by</code> columns even if
+they <strong>do not</strong> match up in the other table.</p>
+<p>This isn’t quite what we were looking for either.</p>
+<p>What we want is to keep all the data in our <code>variants</code>
+data frame, even if we do not find a match for it in the
+<code>metadata_sub</code> table, so we avoid dropping any data if the
+<code>metadata_sub</code> is missing some information. In this case we
+will instead use another “outer join” option called “left join”. A left
+join keeps all of the data in the table written on the left side of our
+function, and will add on columns where the table on the right side
+matches via our <code>by</code> statement.</p>
+<div class="codewrapper sourceCode" id="cb69">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># arguments      "left tbl"  "right tbl"</span></span>
+<span><span class="va">full</span> <span class="op">&lt;-</span> <span class="fu">full_join</span><span class="op">(</span><span class="va">variants</span>, <span class="va">metadata_sub</span>, by <span class="op">=</span> <span class="fu">join_by</span><span class="op">(</span><span class="va">sample_id</span> <span class="op">==</span> <span class="va">run</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'metadata_sub' not found</code></pre>
+</div>
+<p>In this case, the resulting data frame matches our <code>inner</code>
+result exactly because there was no missing data in our right table.
+Note: A “right” join is the opposite of a “left” so it will keep all the
+data in the right most listed table and merge on the info in the left
+most listed table</p>
+<p>It is important to think carefully about what kind of join you want
+and check the resulting data frames to make sure they are what you
+expected when you planned your join. In this case, our “inner” and
+“left” join are the same but you want to be careful about possibly
+dropping or duplicating data depending on how the data frames are
+structured.</p>
+<p>Finally, we can now do a data manipulation using the
+<code>generation</code> column instead of the <code>sample_id</code>
+column. We can repeat the calculations for counting SNPs for each
+sample</p>
+<div class="codewrapper sourceCode" id="cb71">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">left</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">generation</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'left' not found</code></pre>
+</div>
+<p>This result makes it easier to see the accumulation of more SNPs at
+later generations, without us having to know the sample IDs.</p>
+</div>
+<div class="section level3">
 <h3 id="reshaping-data-frames---extra">Reshaping data frames - Extra<a class="anchor" aria-label="anchor" href="#reshaping-data-frames---extra"></a></h3>
 <p>It can sometimes be useful to transform the “long” tidy format, into
 the wide format. This transformation can be done with the
@@ -1632,7 +1812,7 @@ package (also part of the <code>tidyverse</code>).</p>
 <p><code>pivot_wider()</code> takes a data frame as the first argument,
 and two arguments: the column name that will become the columns and the
 column name that will become the cells in the wide data.</p>
-<div class="codewrapper sourceCode" id="cb59">
+<div class="codewrapper sourceCode" id="cb73">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1647,7 +1827,7 @@ column name that will become the cells in the wide data.</p>
 <pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'sample_id'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb61">
+<div class="codewrapper sourceCode" id="cb75">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1665,7 +1845,7 @@ column name that will become the cells in the wide data.</p>
 <code>pivot_longer()</code>. We specify the names of the new columns,
 and here add <code>-CHROM</code> as this column shouldn’t be affected by
 the reshaping:</p>
-<div class="codewrapper sourceCode" id="cb63">
+<div class="codewrapper sourceCode" id="cb77">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1695,7 +1875,7 @@ materials</a></p></li>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul><li>Use the <code>dplyr</code> package to manipulate data frames.</li>
@@ -1739,29 +1919,27 @@ Reproducible Scientific Analysis</a><a href="#fnref1" class="footnote-back">↩�
 
       </div><!--/div.row-->
       		<footer class="row footer mx-md-3"><hr><div class="col-md-6">
-				<p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
+        <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
         
         <a href="https://github.com/UW-Madison-DataScience/phmsci756-genomics-r-intro/edit/main/episodes/05-dplyr.Rmd" class="external-link">Edit on GitHub</a>
         
 	
-        | <a href="https://github.com/UW-Madison-DataScience/phmsci756-genomics-r-intro/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a> 
+        | <a href="https://github.com/UW-Madison-DataScience/phmsci756-genomics-r-intro/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/UW-Madison-DataScience/phmsci756-genomics-r-intro/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/UW-Madison-DataScience/phmsci756-genomics-r-intro/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:team@carpentries.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
 			<div class="col-md-6">
         
-        <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
+        <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
-        <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.15.0" class="external-link">sandpaper (0.15.0)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.7.3" class="external-link">pegboard (0.7.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.4.0" class="external-link">varnish (0.4.0)</a>.</p>
+        <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.1" class="external-link">sandpaper (0.16.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.3" class="external-link">pegboard (0.7.3)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
 		<a href="#top">
-			<i class="search-icon" data-feather="arrow-up" role="img" aria-label="Back to top"></i><br><span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top
+      <i class="search-icon" data-feather="arrow-up" role="img" aria-label="Back To Top"></i><br><!-- <span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top --><span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top
 		</a>
 	</div>
   <script type="application/ld+json">
@@ -1777,8 +1955,8 @@ Reproducible Scientific Analysis</a><a href="#fnref1" class="footnote-back">↩�
   "url": "https://datacarpentry.github.io/genomics-r-intro/instructor/05-dplyr.html",
   "identifier": "https://datacarpentry.github.io/genomics-r-intro/instructor/05-dplyr.html",
   "dateCreated": "2018-03-12",
-  "dateModified": "2023-12-04",
-  "datePublished": "2023-12-12"
+  "dateModified": "2023-12-18",
+  "datePublished": "2023-12-18"
 }
 
   </script><script>
