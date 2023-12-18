@@ -1158,11 +1158,14 @@ This time we will use the `read_delim()` function as it has preset arguments tha
 
 
 ```r
-metadata <- read_delim("data/Ecoli_metadata_composit.tsv")
+metadata <- read_delim("data/Ecoli_metadata_composite.tsv")
 ```
 
-```{.error}
-Error: 'data/Ecoli_metadata_composit.tsv' does not exist in current working directory ('/home/runner/work/phmsci756-genomics-r-intro/phmsci756-genomics-r-intro/site/built').
+```{.warning}
+Warning: One or more parsing issues, call `problems()` on your data frame for details,
+e.g.:
+  dat <- vroom(...)
+  problems(dat)
 ```
 This prints a warning message because the last entry is missing some values but it should still work for our purposes.
 
@@ -1170,10 +1173,6 @@ Before we match-up our table, we will simplify the metadata table to only includ
 
 ```r
 metadata_sub <- select(metadata, strain, generation, run)
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'metadata' not found
 ```
 
 Now we need to consider how we want to merge these two tables together.
@@ -1193,10 +1192,6 @@ You will not need to do this if the columns have the same name across data frame
 ```r
 inner <- inner_join(variants, metadata_sub, by = join_by(sample_id == run))
 ```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'metadata_sub' not found
-```
 In this case the `inner` data frame is the same number of rows (801) as the `variants` data frame.
 This is because all of the `sample_id`'s that are in the `variants` data frame have a corresponding `run` in `metadata_sub`.
 If one was missing, then all of the data for that sample would be dropped from the resulting data frame.
@@ -1210,10 +1205,6 @@ Next we will try an "outer join" which only keeps all observations which are pre
 
 ```r
 full <- full_join(variants, metadata_sub, by = join_by(sample_id == run))
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'metadata_sub' not found
 ```
 The new `full` data frame now has more rows than `inner` or `variants`!
 Though it has the same number of columns as `inner` adding on the two additional `strain` and `generation` columns.
@@ -1232,10 +1223,6 @@ A left join keeps all of the data in the table written on the left side of our f
 ```r
 # arguments      "left tbl"  "right tbl"
 full <- full_join(variants, metadata_sub, by = join_by(sample_id == run))
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'metadata_sub' not found
 ```
 In this case, the resulting data frame matches our `inner` result exactly because there was no missing data in our right table.
 Note: A "right" join is the opposite of a "left" so it will keep all the data in the right most listed table and merge on the info in the left most listed table
