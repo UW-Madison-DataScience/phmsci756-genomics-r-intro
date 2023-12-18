@@ -631,7 +631,7 @@ This time we will use the `read_delim()` function as it has preset arguments tha
 *tab separated value* files, `tsv`, which is the format this table is 
 
 ```{r, purl=FALSE, message=FALSE}
-metadata <- read_delim("data/Ecoli_metadata_composit.tsv")
+metadata <- read_delim("data/Ecoli_metadata_composite.tsv")
 ```
 This prints a warning message because the last entry is missing some values but it should still work for our purposes.
 
