@@ -227,6 +227,18 @@ frequently, you may be surprised at what you find they can do.
 Now let's load our vcf .csv file using `read_csv()`:
 
 
+```{.output}
+Rows: 801 Columns: 29
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (7): sample_id, CHROM, REF, ALT, DP4, Indiv, gt_GT_alleles
+dbl (16): POS, QUAL, IDV, IMF, DP, VDB, RPB, MQB, BQB, MQSB, SGB, MQ0F, AC, ...
+num  (1): gt_PL
+lgl  (5): ID, FILTER, INDEL, ICB, HOB
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
 
 ### Taking a quick look at data frames
 
@@ -1121,6 +1133,128 @@ To remove the grouping structure from a grouped data frame, you can use the `ung
 
 For more details, refer to the [dplyr documentation on grouping](https://dplyr.tidyverse.org/articles/grouping.html).
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+### Combining data frames
+
+There are times you may have multiple data tables that have information that could come together in them.
+This is often a structure set up that reflects database management where you you separate out different information into different related tables.
+For example, you may have one table that contains the results from your SNP analysis, as we have been using in this lesson, and another that has the metadata about your samples.
+For some applications you may want to pull information from that metadata table and be able to use it in your SNP analysis, maybe particular groupings that are repsented in the metadata table or alternate names, or other information.
+
+For our example, we want to be able to use the generation number instead of the `sample_id` for further analyses and perhaps plotting later.
+We have a table of metadata from the [Project Organization and Management for Genomics](https://datacarpentry.org/organization-genomics/01-tidiness.html) lesson that includes columns that matches up the `sample_id` column with the `generation` information.
+
+First, we will download the metadata table using the `download.file` function in R.
+
+
+```r
+download.file("https://raw.githubusercontent.com/datacarpentry/wrangling-genomics/gh-pages/files/Ecoli_metadata_composite.tsv", destfile = "data/Ecoli_metadata_composite.tsv")
+```
+We will only need to do this once and not every time we run our script so we can then comment the last line out.
+
+Next we need to load the metadata table into an object in R.
+This time we will use the `read_delim()` function as it has preset arguments that work well for 
+*tab separated value* files, `tsv`, which is the format this table is 
+
+
+```r
+metadata <- read_delim("data/Ecoli_metadata_composit.tsv")
+```
+
+```{.error}
+Error: 'data/Ecoli_metadata_composit.tsv' does not exist in current working directory ('/home/runner/work/phmsci756-genomics-r-intro/phmsci756-genomics-r-intro/site/built').
+```
+This prints a warning message because the last entry is missing some values but it should still work for our purposes.
+
+Before we match-up our table, we will simplify the metadata table to only include 3 columns.
+
+```r
+metadata_sub <- select(metadata, strain, generation, run)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'metadata' not found
+```
+
+Now we need to consider how we want to merge these two tables together.
+There are many ways we might intersect these two tables, for example:
+*Do we want an intersection that only keeps rows that match in a certain column from both tables?
+Do we want to keep only the rows from one table and the matching information from the other table?
+Do we want to keep only the non-matching information from both tables (though this is less common)?*
+
+In our case we want to keep all the rows from the `variants` table and then pull information that matches from the `metadata_sub` table.
+First, we will explore what happens when we join these tables in other ways as well as an experiment.
+
+First we will try to keep only the rows, observations, that match in both tables.
+This is called an `inner_join`.
+For this join we need to tell it which columns are equivalent in our two data frames.
+You will not need to do this if the columns have the same name across data frames but in our case what is called `sample_id` in the `variants` data frame is called `run` in the `metadata_sub` data frame.
+
+```r
+inner <- inner_join(variants, metadata_sub, by = join_by(sample_id == run))
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'metadata_sub' not found
+```
+In this case the `inner` data frame is the same number of rows (801) as the `variants` data frame.
+This is because all of the `sample_id`'s that are in the `variants` data frame have a corresponding `run` in `metadata_sub`.
+If one was missing, then all of the data for that sample would be dropped from the resulting data frame.
+
+We can also see that instead of having 29 columns/variables like `variants`, `inner` has 31 columns/variables.
+You may want to run `View(inner)` and scroll to the far right to see the new `strain`, and `generation` columns that were added from the `metadata_sub` table.
+Note, it did not add on the `run` column since that is repeated information in the `sample_id` column.
+Also, we would have had many more new columns added if we had used the full `metadata` data frame instead of the `metadata_sub` data frame.
+
+Next we will try an "outer join" which only keeps all observations which are present in either data frames.
+
+```r
+full <- full_join(variants, metadata_sub, by = join_by(sample_id == run))
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'metadata_sub' not found
+```
+The new `full` data frame now has more rows than `inner` or `variants`!
+Though it has the same number of columns as `inner` adding on the two additional `strain` and `generation` columns.
+*Why do you think this has more rows than our original data?*
+Hint: You may want to `View(full)` and scroll down to the botton of the data frame.
+
+Once you look at the bottom of the data frame, you will see a bunch of `sample_id`'s that we did not run the SNP analysis on but were in the `metadata_sub` data frame.
+The full join will keep every unique observation from your `by` columns even if they **do not** match up in the other table.
+
+This isn't quite what we were looking for either.
+
+What we want is to keep all the data in our `variants` data frame, even if we do not find a match for it in the `metadata_sub` table, so we avoid dropping any data if the `metadata_sub` is missing some information.
+In this case we will instead use another "outer join" option called "left join".
+A left join keeps all of the data in the table written on the left side of our function, and will add on columns where the table on the right side matches via our `by` statement.
+
+```r
+# arguments      "left tbl"  "right tbl"
+full <- full_join(variants, metadata_sub, by = join_by(sample_id == run))
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'metadata_sub' not found
+```
+In this case, the resulting data frame matches our `inner` result exactly because there was no missing data in our right table.
+Note: A "right" join is the opposite of a "left" so it will keep all the data in the right most listed table and merge on the info in the left most listed table
+
+It is important to think carefully about what kind of join you want and check the resulting data frames to make sure they are what you expected when you planned your join.  In this case, our "inner" and "left" join are the same but you want to be careful about possibly dropping or duplicating data depending on how the data frames are structured.
+
+Finally, we can now do a data manipulation using the `generation` column instead of the `sample_id` column.  We can repeat the calculations for counting SNPs for each sample
+
+
+```r
+left %>%
+  count(generation)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'left' not found
+```
+This result makes it easier to see the accumulation of more SNPs at later generations, without us having to know the sample IDs.
+
 
 ### Reshaping data frames - Extra
 
