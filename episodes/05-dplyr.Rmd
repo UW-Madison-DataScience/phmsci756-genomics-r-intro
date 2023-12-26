@@ -94,7 +94,8 @@ pipes (`%>%`) to combine them:
 4. `group_by()`
 5. `summarize()`
 6. `mutate()`
-7. `pivot_longer` and `pivot_wider`
+7. `inner_join()`, `full_join()`, `left_join()`, `right_join()`
+7. Extra - `pivot_longer` and `pivot_wider`
 
 Packages in R are sets of additional functions that let you do more
 stuff in R. The functions we've been using, like `str()`, come built into R;
