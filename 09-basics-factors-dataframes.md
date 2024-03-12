@@ -492,12 +492,14 @@ install.packages("ggplot2")
 
 ```{.output}
 The following package(s) will be installed:
-- ggplot2 [3.4.4]
+- ggplot2 [3.5.0]
+- scales  [1.3.0]
 These packages will be installed into "~/work/phmsci756-genomics-r-intro/phmsci756-genomics-r-intro/renv/profiles/lesson-requirements/renv/library/R-4.3/x86_64-pc-linux-gnu".
 
 # Installing packages --------------------------------------------------------
+- Installing scales ...                         OK [linked from cache]
 - Installing ggplot2 ...                        OK [linked from cache]
-Successfully installed 1 package in 6.8 milliseconds.
+Successfully installed 2 packages in 9.9 milliseconds.
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
