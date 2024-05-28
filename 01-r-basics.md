@@ -1,0 +1,445 @@
+---
+title: R Basics
+teaching: 60
+exercises: 20
+source: Rmd
+---
+
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Be able to create the most common R objects including vectors
+- Understand that vectors have modes, which correspond to the type of data they contain
+- Be able to use arithmetic operators on R objects
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- What will these lessons not cover?
+- What are the basic features of the R language?
+- What are the most common objects in R?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+## The fantastic world of R awaits you
+
+Before we begin this lesson, we want you to be clear on the goal of the workshop
+and these lessons. We believe that every learner can **achieve competency
+with R**. After this lesson, you will find that you are able to
+**use R to handle common analysis challenges in a reasonable amount of time**
+(which includes time needed to look at learning materials, search for answers
+online, and ask colleagues for help). As you spend more time using R (there is
+no substitute for regular use and practice) you will find yourself gaining
+competency and even expertise. The more familiar you get, the more
+complex the analyses you will be able to carry out, with less frustration, and
+in less time - the fantastic world of R awaits you!
+
+## What these lessons will not teach you
+
+Many people want to learn how to use R to analyze
+their own research questions. Some folks learn R for R's sake, but
+these lessons assume that you want to start analyzing genomic or pharama data as soon as
+possible. Given this, there are many valuable pieces of information about R
+that we simply won't have time to cover. Hopefully, we will clear the hurdle of
+giving you just enough knowledge to be dangerous, which can be a high bar
+in R! We suggest you look into the additional learning materials in the tip box
+below.
+
+**Here are some R skills we will *not* cover in these lessons**
+
+- How to create and work with R matrices
+- How to create and work with loops and conditional statements, and the "apply"
+  family of functions (which are super useful, read [this blog post to learn more about these functions](https://www.r-bloggers.com/r-tutorial-on-the-apply-family-of-functions/))
+- How to do basic string manipulations (e.g. finding patterns in text using grep, replacing text)
+- How to plot using the default R graphic tools (we *will* cover plot creation, but will do so using the popular plotting package `ggplot2`)
+- How to use advanced R statistical functions
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Tip: Where to learn more
+
+The following are good resources for learning more about R. Some of them
+can be quite technical, but if you are a regular R user you may ultimately
+need this technical knowledge.
+
+- [R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf):
+  By Emmanuel Paradis and a great starting point
+- [The R Manuals](https://cran.r-project.org/manuals.html): Maintained by the
+  R project
+- [R contributed documentation](https://cran.r-project.org/other-docs.html):
+  Also linked to the R project; importantly there are materials available in
+  several languages
+- [R for Data Science](https://r4ds.had.co.nz/): A wonderful collection by
+  noted R educators and developers Garrett Grolemund and Hadley Wickham
+- [Practical Data Science for Stats](https://peerj.com/collections/50-practicaldatascistats/):
+  Not exclusively about R usage, but a nice collection of pre-prints on data science
+  and applications for R
+- [Programming in R Software Carpentry lesson](https://software-carpentry.org/lessons/):
+  There are several Software Carpentry lessons in R to choose from
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Creating objects in R
+
+
+What might be called a variable in many languages is called an **object**
+in R.
+
+**To create an object you need:**
+
+- a name (e.g. 'a')
+- a value (e.g. '1')
+- the assignment operator ('\<-')
+
+In your script, using the R assignment operator '\<-',
+assign '1' to the object 'a'. Remember to leave a comment in the line
+above (using the '#') to explain what you are doing:
+
+
+```r
+# this line creates the object 'a' and assigns it the value '1'
+
+a <- 1
+```
+
+Next, run this line of code in your script. You can run a line of code
+by hitting the <KBD>Run</KBD> button that is just above the first line of your
+script in the header of the Source pane or you can use the appropriate shortcut:
+
+- Windows shortcut: <KBD>Ctrl</KBD>\+<KBD>Enter</KBD>
+- Mac shortcut: <KBD>Cmd(⌘)</KBD>\+<KBD>Enter</KBD>
+
+To run multiple lines of code, you can highlight all the lines you wish to run
+and then hit <KBD>Run</KBD> or use the shortcut key combo listed above.
+
+In the RStudio 'Console' you should see:
+
+```output
+a <- 1
+>
+```
+
+The 'Console' will display lines of code run from a script and any outputs or
+status/warning/error messages (usually in red).
+
+In the 'Environment' window you will also get a table:
+
+| Values              |                                                                                                                                                                                                                                             |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| a                   | 1                                                                                                                                                                                                                                           |
+
+The 'Environment' window allows you to keep track of the objects you have
+created in R.
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exercise: Create some objects in R
+
+Create the following objects; give each object an appropriate name
+(your best guess at what name to use is fine):
+
+1. Create an object that has the value of number of pairs of human chromosomes
+2. Create an object that has a value of your favorite gene name
+3. Create an object that has this URL as its value: "[ftp://ftp.ensemblgenomes.org/pub/bacteria/release-39/fasta/bacteria\_5\_collection/escherichia\_coli\_b\_str\_rel606/](ftp://ftp.ensemblgenomes.org/pub/bacteria/release-39/fasta/bacteria_5_collection/escherichia_coli_b_str_rel606/)"
+4. Create an object that has the value of the number of chromosomes in a
+  diploid human cell
+
+:::::::::::::::  solution
+
+## Solution
+
+Here as some possible answers to the challenge:
+
+
+```r
+human_chr_number <- 23
+gene_name <- 'pten'
+ensemble_url <- 'ftp://ftp.ensemblgenomes.org/pub/bacteria/release-39/fasta/bacteria_5_collection/escherichia_coli_b_str_rel606/'
+human_diploid_chr_num <-  2 * human_chr_number
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Naming objects in R
+
+Here are some important details about naming objects in R.
+
+- **Avoid spaces and special characters**: Object names cannot contain spaces or the minus sign (`-`). You can use '\_' to make names more readable. You should avoid
+  using special characters in your object name (e.g. ! @ # . , etc.). Also,
+  object names cannot begin with a number.
+- **Use short, easy-to-understand names**: You should avoid naming your objects
+  using single letters (e.g. 'n', 'p', etc.). This is mostly to encourage you
+  to use names that would make sense to anyone reading your code (a colleague,
+  or even yourself a year from now). Also, avoiding excessively long names will
+  make your code more readable.
+- **Avoid commonly used names**: There are several names that may already have a
+  definition in the R language (e.g. 'mean', 'min', 'max'). One clue that a name
+  already has meaning is that if you start typing a name in RStudio and it gets
+  a colored highlight or RStudio gives you a suggested autocompletion you have
+  chosen a name that has a reserved meaning.
+- **Use the recommended assignment operator**: In R, we use '\<- ' as the
+  preferred assignment operator. '=' works too, but is most commonly used in
+  passing arguments to functions (more on functions later). There is a shortcut
+  for the R assignment operator:
+  - Windows assignment shortcut: <KBD>Alt</KBD>\+<KBD>\-</KBD>
+  - Mac assignment shortcut: <KBD>Option</KBD>\+<KBD>\-</KBD>
+
+There are a few more suggestions about naming and style you may want to learn
+more about as you write more R code. There are several "style guides" that
+have advice, and one to start with is the [tidyverse R style guide](https://style.tidyverse.org/index.html).
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Tip: Pay attention to warnings in the script console
+
+If you enter a line of code in your script that contains an error, RStudio
+may give you an error message and underline this mistake. Sometimes these
+messages are easy to understand, but often the messages may need some figuring
+out. Paying attention to these warnings will help you avoid mistakes. In the example image below, our object name has a space, which
+is not allowed in R. The error message does not say this directly,
+but R is "not sure"
+about how to assign the name to "human\_ chr\_number" when the object name we
+want is "human\_chr\_number".
+
+<img src="fig/rstudio_script_warning.png" alt="rstudio script warning for space in object name" style="width: 600px;"/>
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Reassigning object names or deleting objects
+
+Once an object has a value, you can change that value by overwriting it. R will
+not give you a warning or error if you overwriting an object, which
+may or may not be a good thing
+depending on how you look at it.
+
+
+```r
+# gene_name has the value 'pten' or whatever value you used in the challenge.
+# We will now assign the new value 'tp53'
+gene_name <- 'tp53'
+```
+
+You can also remove an object from R's memory entirely. The `rm()` function
+will delete the object.
+
+
+```r
+# delete the object 'gene_name'
+rm(gene_name)
+```
+
+If you run a line of code that has only an object name, R will normally display
+the contents of that object. In this case, we are told the object no
+longer exists.
+
+```error
+Error: object 'gene_name' not found
+```
+
+## Understanding object data types (modes)
+
+In R, **every object has two properties**:
+
+- **Length**: How many distinct values are held in that object
+- **Mode**: What is the classification (type) of that object.
+
+We will get to the "length" property later in the lesson. The **"mode" property**
+**corresponds to the type of data an object represents**. The most common modes
+you will encounter in R are:
+
+| Mode (abbreviation) | Type of data                                                                                                                                                                                                                                |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Numeric (num)       | Numbers such floating point/decimals (1.0, 0.5, 3.14), there are also more specific numeric types (dbl - Double, int - Integer). These differences are not relevant for most beginners and pertain to how these values are stored in memory |
+| Character (chr)     | A sequence of letters/numbers in single '' or double " " quotes                                                                                                                                                                             |
+| Logical             | Boolean values - TRUE or FALSE                                                                                                                                                                                                              |
+
+There are a few other modes (i.e. "complex", "raw" etc.) but these
+are the three we will work with in this lesson.
+
+Data types are familiar in many programming languages, but also in natural
+language where we refer to them as the parts of speech, e.g. nouns, verbs,
+adverbs, etc. Once you know if a word - perhaps an unfamiliar one - is a noun,
+you can probably guess you can count it and make it plural if there is more than
+one (e.g. 1 [Tuatara](https://en.wikipedia.org/wiki/Tuatara), or 2 Tuataras). If
+something is a adjective, you can usually change it into an adverb by adding
+"-ly" (e.g. [jejune](https://www.merriam-webster.com/dictionary/jejune) vs.
+jejunely). Depending on the context, you may need to decide if a word is in one
+category or another (e.g "cut" may be a noun when it's on your finger, or a verb
+when you are preparing vegetables). These concepts have important analogies when
+working with R objects.
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exercise: Create objects and check their modes
+
+Create the following objects in R, then use the `mode()` function to verify
+their modes. Try to guess what the mode will be before you look at the solution
+
+1. `chromosome_name <- 'chr02'`
+2. `od_600_value <- 0.47`
+3. `chr_position <- '1001701'`
+4. `spock <- TRUE`
+5. `pilot <- Earhart`
+
+:::::::::::::::  solution
+
+## Solution
+
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'Earhart' not found
+```
+
+
+```r
+mode(chromosome_name)
+```
+
+```{.output}
+[1] "character"
+```
+
+```r
+mode(od_600_value)
+```
+
+```{.output}
+[1] "numeric"
+```
+
+```r
+mode(chr_position)
+```
+
+```{.output}
+[1] "character"
+```
+
+```r
+mode(spock)
+```
+
+```{.output}
+[1] "logical"
+```
+
+```r
+mode(pilot)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'pilot' not found
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Notice from the solution that even if a series of numbers is given as a value
+R will consider them to be in the "character" mode if they are enclosed as
+single or double quotes. Also, notice that you cannot take a string of alphanumeric
+characters (e.g. Earhart) and assign as a value for an object. In this case,
+R looks for an object named `Earhart` but since there is no object, no assignment can
+be made. If `Earhart` did exist, then the mode of `pilot` would be whatever
+the mode of `Earhart` was originally. If we want to create an object
+called `pilot` that was the **name** "Earhart", we need to enclose
+`Earhart` in quotation marks.
+
+
+```r
+pilot <- "Earhart"
+mode(pilot)
+```
+
+```{.output}
+[1] "character"
+```
+
+## Mathematical and functional operations on objects
+
+Once an object exists (which by definition also means it has a mode), R can
+appropriately manipulate that object. For example, objects of the numeric modes
+can be added, multiplied, divided, etc. R provides several mathematical
+(arithmetic) operators including:
+
+| Operator            | Description                                                                                                                                                                                                                                 |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \+                   | addition                                                                                                                                                                                                                                    |
+| \-                   | subtraction                                                                                                                                                                                                                                 |
+| \*                   | multiplication                                                                                                                                                                                                                              |
+| /                   | division                                                                                                                                                                                                                                    |
+| ^ or \*\*             | exponentiation                                                                                                                                                                                                                              |
+| a%/%b               | integer division (division where the remainder is discarded)                                                                                                                                                                                |
+| a%%b                | modulus (returns the remainder after division)                                                                                                                                                                                              |
+
+These can be used with literal numbers:
+
+
+```r
+(1 + (5 ** 0.5))/2
+```
+
+```{.output}
+[1] 1.618034
+```
+
+and importantly, can be used on any object that evaluates to (i.e. interpreted
+by R) a numeric object:
+
+
+
+
+```r
+# multiply the object 'human_chr_number' by 2
+
+human_chr_number * 2
+```
+
+```{.output}
+[1] 46
+```
+
+Note, for this calculation we did not save the result, as we did not assign it to a variable.
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exercise: Compute the golden ratio
+
+One approximation of the golden ratio (φ) can be found by taking the sum of 1
+and the square root of 5, and dividing by 2 as in the example above. Compute
+the golden ratio to 3 digits of precision using the `sqrt()` and `round()`
+functions. Hint: remember the `round()` function can take 2 arguments.
+
+:::::::::::::::  solution
+
+## Solution
+
+
+```r
+round((1 + sqrt(5))/2, digits = 3)
+```
+
+```{.output}
+[1] 1.618
+```
+
+Notice that you can place one function inside of another.
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- Effectively using R is a journey of months or years. Still you don't have to be an expert to use R and you can start using and analyzing your data with with about a day's worth of training
+- It is important to understand how data are organized by R in a given object type and how the mode of that type (e.g. numeric, character, logical, etc.) will determine how R will operate on that data.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
