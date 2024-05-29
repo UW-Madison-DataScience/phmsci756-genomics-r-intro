@@ -99,7 +99,7 @@ assign '1' to the object 'a'. Remember to leave a comment in the line
 above (using the '#') to explain what you are doing:
 
 
-```r
+``` r
 # this line creates the object 'a' and assigns it the value '1'
 
 a <- 1
@@ -154,7 +154,7 @@ Create the following objects; give each object an appropriate name
 Here as some possible answers to the challenge:
 
 
-```r
+``` r
 human_chr_number <- 23
 gene_name <- 'pten'
 ensemble_url <- 'ftp://ftp.ensemblgenomes.org/pub/bacteria/release-39/fasta/bacteria_5_collection/escherichia_coli_b_str_rel606/'
@@ -218,7 +218,7 @@ may or may not be a good thing
 depending on how you look at it.
 
 
-```r
+``` r
 # gene_name has the value 'pten' or whatever value you used in the challenge.
 # We will now assign the new value 'tp53'
 gene_name <- 'tp53'
@@ -228,7 +228,7 @@ You can also remove an object from R's memory entirely. The `rm()` function
 will delete the object.
 
 
-```r
+``` r
 # delete the object 'gene_name'
 rm(gene_name)
 ```
@@ -291,48 +291,48 @@ their modes. Try to guess what the mode will be before you look at the solution
 ## Solution
 
 
-```{.error}
+``` error
 Error in eval(expr, envir, enclos): object 'Earhart' not found
 ```
 
 
-```r
+``` r
 mode(chromosome_name)
 ```
 
-```{.output}
+``` output
 [1] "character"
 ```
 
-```r
+``` r
 mode(od_600_value)
 ```
 
-```{.output}
+``` output
 [1] "numeric"
 ```
 
-```r
+``` r
 mode(chr_position)
 ```
 
-```{.output}
+``` output
 [1] "character"
 ```
 
-```r
+``` r
 mode(spock)
 ```
 
-```{.output}
+``` output
 [1] "logical"
 ```
 
-```r
+``` r
 mode(pilot)
 ```
 
-```{.error}
+``` error
 Error in eval(expr, envir, enclos): object 'pilot' not found
 ```
 
@@ -351,12 +351,12 @@ called `pilot` that was the **name** "Earhart", we need to enclose
 `Earhart` in quotation marks.
 
 
-```r
+``` r
 pilot <- "Earhart"
 mode(pilot)
 ```
 
-```{.output}
+``` output
 [1] "character"
 ```
 
@@ -380,11 +380,11 @@ can be added, multiplied, divided, etc. R provides several mathematical
 These can be used with literal numbers:
 
 
-```r
+``` r
 (1 + (5 ** 0.5))/2
 ```
 
-```{.output}
+``` output
 [1] 1.618034
 ```
 
@@ -394,13 +394,13 @@ by R) a numeric object:
 
 
 
-```r
+``` r
 # multiply the object 'human_chr_number' by 2
 
 human_chr_number * 2
 ```
 
-```{.output}
+``` output
 [1] 46
 ```
 
@@ -420,11 +420,11 @@ functions. Hint: remember the `round()` function can take 2 arguments.
 ## Solution
 
 
-```r
+``` r
 round((1 + sqrt(5))/2, digits = 3)
 ```
 
-```{.output}
+``` output
 [1] 1.618
 ```
 
