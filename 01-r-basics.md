@@ -292,7 +292,7 @@ their modes. Try to guess what the mode will be before you look at the solution
 
 
 ``` error
-Error in eval(expr, envir, enclos): object 'Earhart' not found
+Error: object 'Earhart' not found
 ```
 
 
@@ -333,7 +333,7 @@ mode(pilot)
 ```
 
 ``` error
-Error in eval(expr, envir, enclos): object 'pilot' not found
+Error: object 'pilot' not found
 ```
 
 :::::::::::::::::::::::::
