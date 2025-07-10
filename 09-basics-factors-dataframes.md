@@ -497,7 +497,7 @@ These packages will be installed into "~/work/phmsci756-genomics-r-intro/phmsci7
 
 # Installing packages --------------------------------------------------------
 - Installing ggplot2 ...                        OK [linked from cache]
-Successfully installed 1 package in 5.3 milliseconds.
+Successfully installed 1 package in 5.4 milliseconds.
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
