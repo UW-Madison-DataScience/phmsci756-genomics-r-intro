@@ -491,20 +491,13 @@ install.packages("ggplot2")
 ```
 
 ``` output
-# Downloading packages -------------------------------------------------------
-- Downloading ggplot2 from https://packagemanager.posit.co/cran/__linux__/jammy/latest ... OK [5.7 Mb in 0.22s]
-- Downloading S7 from https://packagemanager.posit.co/cran/__linux__/jammy/latest ... OK [316.8 Kb in 0.29s]
-Successfully downloaded 2 packages in 1.5 seconds.
-
 The following package(s) will be installed:
 - ggplot2 [4.0.0]
-- S7      [0.2.0]
 These packages will be installed into "~/work/phmsci756-genomics-r-intro/phmsci756-genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
 
 # Installing packages --------------------------------------------------------
-- Installing S7 ...                             OK [installed binary and cached in 0.19s]
-- Installing ggplot2 ...                        OK [installed binary and cached in 0.89s]
-Successfully installed 2 packages in 1.2 seconds.
+- Installing ggplot2 ...                        OK [linked from cache]
+Successfully installed 1 package in 5.2 milliseconds.
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
