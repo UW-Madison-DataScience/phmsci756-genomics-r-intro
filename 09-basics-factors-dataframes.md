@@ -352,7 +352,8 @@ Warning in max(x): no non-missing arguments to max; returning -Inf
 ```
 
 ``` error
-Error in plot.window(...): need finite 'ylim' values
+Error in `plot.window()`:
+! need finite 'ylim' values
 ```
 
 Whoops! Though the `plot()` function will do its best to give us a quick plot,
@@ -427,7 +428,7 @@ possible SNP we could generate a plot:
 plot(factor_snps)
 ```
 
-<img src="fig/09-basics-factors-dataframes-rendered-unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
+<img src="fig/09-basics-factors-dataframes-rendered-unnamed-chunk-14-1.png" alt="" style="display: block; margin: auto;" />
 
 This isn't a particularly pretty example of a plot but it works. We'll be
 learning much more about creating nice, publication-quality graphics later in
@@ -464,7 +465,7 @@ Now we see our plot has be reordered:
 plot(ordered_factor_snps)
 ```
 
-<img src="fig/09-basics-factors-dataframes-rendered-unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
+<img src="fig/09-basics-factors-dataframes-rendered-unnamed-chunk-16-1.png" alt="" style="display: block; margin: auto;" />
 
 Factors come in handy in many places when using R. Even using more
 sophisticated plotting packages such as ggplot2 will sometimes require you
@@ -492,12 +493,12 @@ install.packages("ggplot2")
 
 ``` output
 The following package(s) will be installed:
-- ggplot2 [4.0.0]
+- ggplot2 [4.0.1]
 These packages will be installed into "~/work/phmsci756-genomics-r-intro/phmsci756-genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
 
 # Installing packages --------------------------------------------------------
-- Installing ggplot2 ...                        OK [linked from cache]
-Successfully installed 1 package in 5.2 milliseconds.
+- Installing ggplot2 4.0.1 ...                  OK [linked from cache]
+Successfully installed 1 package in 5.6 milliseconds.
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
