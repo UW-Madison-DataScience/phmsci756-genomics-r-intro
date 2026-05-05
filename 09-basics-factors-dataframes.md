@@ -493,12 +493,12 @@ install.packages("ggplot2")
 
 ``` output
 The following package(s) will be installed:
-- ggplot2 [4.0.2]
-These packages will be installed into "/__w/phmsci756-genomics-r-intro/phmsci756-genomics-r-intro/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-noble/R-4.5/x86_64-pc-linux-gnu".
+- ggplot2 [4.0.3]
+These packages will be installed into "/home/rstudio/lesson/renv/profiles/lesson-requirements/renv/library/linux-ubuntu-noble/R-4.5/x86_64-pc-linux-gnu".
 
 # Installing packages --------------------------------------------------------
-[32m✔[0m ggplot2 4.0.2                            [linked from cache]
-Successfully installed 1 package in 3.5 milliseconds.
+[32m✔[0m ggplot2 4.0.3                            [linked from cache]
+Successfully installed 1 package in 2.7 milliseconds.
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
