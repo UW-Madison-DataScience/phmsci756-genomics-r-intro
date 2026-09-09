@@ -498,7 +498,7 @@ These packages will be installed into "/__w/phmsci756-genomics-r-intro/phmsci756
 
 # Installing packages --------------------------------------------------------
 [32m✔[0m ggplot2 4.0.3                            [linked from cache]
-Successfully installed 1 package in 3.5 milliseconds.
+Successfully installed 1 package in 3.6 milliseconds.
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
