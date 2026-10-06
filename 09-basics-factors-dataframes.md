@@ -498,7 +498,7 @@ These packages will be installed into "/__w/phmsci756-genomics-r-intro/phmsci756
 
 # Installing packages --------------------------------------------------------
 [32m✔[0m ggplot2 4.0.3                            [linked from cache]
-Successfully installed 1 package in 3.6 milliseconds.
+Successfully installed 1 package in 3 milliseconds.
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -1272,22 +1272,24 @@ Finally, let's check the first few lines of the `Ecoli_metadata` data
 frame:
 
 
+``` error
+Error in `download.file()`:
+! cannot open URL 'https://de.cyverse.org/dl/d/17FAE062-2673-417B-8544-77CC46974A37/Ecoli_metadata.xlsx'
+```
+
+``` error
+Error:
+! `path` does not exist: 'Ecoli_metadata.xlsx'
+```
 
 
 ``` r
 head(Ecoli_metadata)
 ```
 
-``` output
-# A tibble: 6 × 7
-  sample   generation clade   strain cit     run       genome_size
-  <chr>         <dbl> <chr>   <chr>  <chr>   <chr>           <dbl>
-1 REL606            0 NA      REL606 unknown <NA>             4.62
-2 REL1166A       2000 unknown REL606 unknown SRR098028        4.63
-3 ZDB409         5000 unknown REL606 unknown SRR098281        4.6 
-4 ZDB429        10000 UC      REL606 unknown SRR098282        4.59
-5 ZDB446        15000 UC      REL606 unknown SRR098283        4.66
-6 ZDB458        20000 (C1,C2) REL606 unknown SRR098284        4.63
+``` error
+Error:
+! object 'Ecoli_metadata' not found
 ```
 
 The type of this object is 'tibble', a type of data
@@ -1325,51 +1327,72 @@ H) Save the edited Ecoli\_metadata data frame as "exercise\_solution.csv" in you
 dim(Ecoli_metadata)
 ```
 
-``` output
-[1] 30  7
+``` error
+Error:
+! object 'Ecoli_metadata' not found
 ```
 
 ``` r
 levels(as.factor(Ecoli_metadata$cit))
 ```
 
-``` output
-[1] "minus"   "plus"    "unknown"
+``` error
+Error:
+! object 'Ecoli_metadata' not found
 ```
 
 ``` r
 table(as.factor(Ecoli_metadata$cit))
 ```
 
-``` output
-
-  minus    plus unknown 
-      9       9      12 
+``` error
+Error:
+! object 'Ecoli_metadata' not found
 ```
 
 ``` r
 Ecoli_metadata[7,7]
 ```
 
-``` output
-# A tibble: 1 × 1
-  genome_size
-        <dbl>
-1        4.62
+``` error
+Error:
+! object 'Ecoli_metadata' not found
 ```
 
 ``` r
 median(Ecoli_metadata$genome_size)
 ```
 
-``` output
-[1] 4.625
+``` error
+Error:
+! object 'Ecoli_metadata' not found
 ```
 
 ``` r
 colnames(Ecoli_metadata)[colnames(Ecoli_metadata) == "sample"] <- "sample_id"
+```
+
+``` error
+Error:
+! object 'Ecoli_metadata' not found
+```
+
+``` r
 Ecoli_metadata$genome_size_bp <- Ecoli_metadata$genome_size * 1000000
+```
+
+``` error
+Error:
+! object 'Ecoli_metadata' not found
+```
+
+``` r
 write.csv(Ecoli_metadata, file = "exercise_solution.csv")
+```
+
+``` error
+Error:
+! object 'Ecoli_metadata' not found
 ```
 
 :::::::::::::::::::::::::
